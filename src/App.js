@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Test from './test.js';
 
 function App() {
   return (
@@ -23,4 +24,17 @@ function App() {
   );
 }
 
-export default App;
+class Divider extends React.Component{
+  render(){
+    const text = "hello";
+    return(
+      <div className="Test">
+        <h1>{text}</h1>
+        <Test/>
+      </div>
+    );
+  }
+}
+
+
+export default Divider;
