@@ -24,13 +24,83 @@ function App() {
   );
 }
 
+// NG例
+// class Divider extends React.Component{
+//   render(){
+//     const text = "hello";
+//     return(
+//       <div className={if(text){classRed}}>
+//         <h1>{text}</h1>
+//       </div>
+//     );
+//   }
+// }
+
+//三項演算子を使う
+// class Divider extends React.Component{
+//   render(){
+//     let colorFlag = true;
+//     const text = "hello";
+//     return(
+//       <div className={colorFlag ? 'fontRed' : ''}>
+//         <h1>{text}</h1>
+//       </div>
+//     );
+//   }
+// }
+
+// // 変数を使う
+// class Divider extends React.Component{
+//   constructor(props){
+//     super(props);
+//     this.state = {color:'red'};
+//   }
+//   getIsColorFlag(){
+//     return this.state.color == 'red' ? 'fontRed' : '';
+//   }
+//   render(){
+//     const text = "hello";
+//     // 関数呼び出し、代入
+//     let fontRed = this.getIsColorFlag();
+//     return(
+//       <div className={fontRed}>
+//         <h1>{text}</h1>
+//       </div>
+//     );
+//   }
+// }
+
+// //関数呼び出しを使う
+// class Divider extends React.Component{
+//   constructor(props){
+//     super(props);
+//     this.state = {color:'red'};
+//   }
+//   getIsColorFlag(){
+//     return this.state.color == 'red' ? 'fontRed' : '';
+//   }
+//   render(){
+//     const text = "hello";
+//     return(
+//       <div className={this.getIsColorFlag()}>
+//         <h1>{text}</h1>
+//       </div>
+//     );
+//   }
+// }
+
+//&&を使う
 class Divider extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {color:'red'};
+  }
+  
   render(){
     const text = "hello";
     return(
-      <div className="Test">
+      <div className={this.state.color && 'fontRed'}>
         <h1>{text}</h1>
-        <Test/>
       </div>
     );
   }
