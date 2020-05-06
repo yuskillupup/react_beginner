@@ -27,9 +27,10 @@ function App() {
 // NG例
 // class Divider extends React.Component{
 //   render(){
+//     let colorFlag = true;
 //     const text = "hello";
 //     return(
-//       <div className={if(text){classRed}}>
+//       <div className={if(colorFlag){fontRed}}>
 //         <h1>{text}</h1>
 //       </div>
 //     );
@@ -90,21 +91,69 @@ function App() {
 // }
 
 //&&を使う
+// class Divider extends React.Component{
+//   constructor(props){
+//     super(props);
+//     this.state = {color:'red'};
+//   }
+  
+//   render(){
+//     const text = "hello";
+//     return(
+//       <div className={this.state.color && 'fontRed'}>
+//         <h1>{text}</h1>
+//       </div>
+//     );
+//   }
+// }
+
+// 2.4.3.3 HTML文字列として読み込む XXSに注意
+// class Divider extends React.Component{
+//   render(){
+//     const text = "hello";
+//     var htmlString = {
+//       __html: '<h2>HTML文字列</h2>'
+//     }
+//     return (
+//       <div dangerouslySetInnerHTML={htmlString}>
+//       </div>
+//     )
+//   }
+// }
+
+// 2.4.7スタイル
+// class Divider extends React.Component{
+//   render(){
+//     var styles ={
+//       color: "blue"
+//     }
+//     return (
+//       <div style={styles}>
+//         aaaaa
+//       </div>
+//     )
+//   }
+// }
+
+
+// ９章　フォーム 大文字で表示する
 class Divider extends React.Component{
   constructor(props){
     super(props);
-    this.state = {color:'red'};
+    this.state = {value: ''};
+    // bindがないと"TypeError: Cannot read property 'setState' of undefined"
+    this.handleChange = this.handleChange.bind(this);
   }
-  
+  handleChange(event){
+    this.setState({
+      value : event.target.value.toUpperCase()
+    })
+  }
   render(){
-    const text = "hello";
-    return(
-      <div className={this.state.color && 'fontRed'}>
-        <h1>{text}</h1>
-      </div>
-    );
+    return (
+      <input type="text" value={this.state.value} onChange={this.handleChange}/>
+    )
   }
 }
-
 
 export default Divider;
