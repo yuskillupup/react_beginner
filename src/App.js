@@ -137,6 +137,26 @@ function App() {
 
 
 // ９章　フォーム 大文字で表示する
+// class Divider extends React.Component{
+//   constructor(props){
+//     super(props);
+//     this.state = {value: ''};
+//     // bindがないと"TypeError: Cannot read property 'setState' of undefined"
+//     this.handleChange = this.handleChange.bind(this);
+//   }
+//   handleChange(event){
+//     this.setState({
+//       value : event.target.value.toUpperCase()
+//     })
+//   }
+//   render(){
+//     return (
+//       <input type="text" value={this.state.value} onChange={this.handleChange}/>
+//     )
+//   }
+// }
+
+// フォーム　select
 class Divider extends React.Component{
   constructor(props){
     super(props);
@@ -151,7 +171,10 @@ class Divider extends React.Component{
   }
   render(){
     return (
-      <input type="text" value={this.state.value} onChange={this.handleChange}/>
+      <select multiple={true} value={this.handleChange}>
+        <option value="A">選択肢A</option>
+        <option value="B">選択肢B</option>
+      </select>
     )
   }
 }
